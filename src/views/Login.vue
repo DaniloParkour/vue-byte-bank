@@ -23,7 +23,6 @@
 </template> 
 
 <script>
-import axios from 'axios'
 export default {
     data() {
         return {
@@ -32,7 +31,8 @@ export default {
     },
     methods: {
            efetuarLogin() {
-               axios.post('http://localhost:8000/auth/login', this.usuario)
+               //$http foi definido para uso no arquivo "main.js"
+               this.$http.post('auth/login', this.usuario)
                 .then(response => {
                     console.log(response);
                     //Salvar o token para não precisar de login novamente, vamos remover no logout
