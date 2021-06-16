@@ -23,6 +23,11 @@
 </template> 
 
 <script>
+
+//Exemplo de import com @ que faz o caminho partir de src
+//Por exemplo, para acessar src/components/exemplo
+//import exemplo from '@/components/exemplo'
+
 export default {
     data() {
         return {
