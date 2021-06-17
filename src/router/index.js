@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Gerentes from '../views/Gerentes.vue'
 import Home from '../views/Home.vue'
-import NovoUsuario from '../views/NovoUsuario'
 import Login from '../views/Login'
 import provedor from '@/provedor'
 
@@ -17,12 +15,15 @@ const routes = [
   {
     path: '/gerentes',
     name: 'gerentes',
-    component: Gerentes
+    /* Dessa forma, além de importar apenas quando necessário, o webpack vai agrupar com as
+    demais rotas com ChunkName "funcionarios" */
+    component: () => import(/* webpackChunkName: "funcionarios" */ '../views/Gerentes.vue')
   },
   { 
     path: '/cadastre-se',
     name: 'novo.usuario',
-    component: NovoUsuario,
+    //Dessa forma, a importação só será feita quando o componente for chamado
+    component: () => import ('../views/NovoUsuario'),
     meta: {
       publica: true //será usado para indicar que a rota não precisa de autenticação
     }
