@@ -1,67 +1,15 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-bytebank">
-      <a class="navbar-brand" href="#">ByteBank</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon">
-          <div class="small_black_bar"></div>
-          <div class="small_black_bar"></div>
-          <div class="small_black_bar"></div>
-        </span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-
-          <li class="nav-item">
-            <router-link class="nav-link" to="/">Home</router-link>
-          </li>
-
-          <li class="nav-item">
-            <router-link to="/gerentes" class="nav-link">
-              Gerentes
-            </router-link>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" @click.prevent="efetuarLogout">
-              Logout
-            </a>
-          </li>
-
-        </ul>
-      </div>
-    </nav>
+    <BarraNavegacao/>
     <router-view/>
   </div>
 </template>
 
 <script>
+  import BarraNavegacao from '@/components/BarraNavegacao'
   export default {
-    methods: {
-      efetuarLogout() {
-        localStorage.removeItem('token');
-        this.$router.push({name: 'login' });
-      }
+    components: {
+      BarraNavegacao
     }
   }
 </script>
-
-
-<style>
-.navbar {
-  background: #27ae60;
-}
-.navbar-bytebank a {
-  color: #fff;
-}
-.navbar-bytebank a:hover {
-  color: #000;
-}
-
-.small_black_bar {
-  width: 30px;
-  height: 3px;
-  background-color: black;
-  margin: 5px 2px;
-}
-</style>
