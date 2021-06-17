@@ -36,7 +36,13 @@ export default {
     },
     methods: {
            efetuarLogin() {
+
+               //Usamos agora apenas a action definida no provedor para o Vuex
+               this.$store.dispatch('efeturaLogin', this.usuario)
+                            .then( () => { this.$router.push({ name: 'gerentes' }) } )
+
                //$http foi definido para uso no arquivo "main.js"
+               /*
                this.$http.post('auth/login', this.usuario)
                 .then(response => {
                     console.log(response);
@@ -48,8 +54,8 @@ export default {
                     //this.$store.state.token = response.data.access_token;
                     //this.$store.state.usuario = response.data.user;
 
-                    /* Fazermos a alteração chamando o commit e passando a mutation que definimos no
-                    provedor.js e que desejamos usar aqui. No caso a 'DEFINIR_USUARIO_LOGADO' */
+                    //Fazermos a alteração chamando o commit e passando a mutation que definimos no
+                    //provedor.js e que desejamos usar aqui. No caso a 'DEFINIR_USUARIO_LOGADO'
                     this.$store.commit('DEFINIR_USUARIO_LOGADO', {
                         token: response.data.access_token,
                         usuario: response.data.user
@@ -58,6 +64,7 @@ export default {
                     this.$router.push({ name: 'gerentes' });
                 })
                 .catch(erro => console.log(erro));
+                */
            }     
     }
 }
