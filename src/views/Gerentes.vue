@@ -24,7 +24,20 @@ export default {
                 .then(response => this.gerentes = response.data)
                 .catch(erro => console.log(erro))
                 
+  },
+
+  //Ciclo de vida antes de entrar na rota, o objeto ainda nem foi criado
+  /*
+  beforeRouteEnter(to, from, next) {
+    //Se não tem um usuário logado ao montar a tela Gerentes, mandar para a rota login
+    if(texte_exemplo) {
+      console.log('Não há usuário logado');
+      // Muda a next page. Seria com antes de começar a montar o componente enviasse um
+      // this.$router.push({ name: 'login' });
+      next( { name: 'login' } );
+    }
   }
+  */
 }
 </script>
 
