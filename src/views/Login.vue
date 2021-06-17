@@ -41,7 +41,20 @@ export default {
                 .then(response => {
                     console.log(response);
                     //Salvar o token para não precisar de login novamente, vamos remover no logout
-                    localStorage.setItem("token", response.data.access_token);
+                    //Não vamos mais usar a localScorage, agora vai ser o vuex
+                    //localStorage.setItem("token", response.data.access_token);
+
+                    //Não pode ser alterado diretamente como nas linas abaixo
+                    //this.$store.state.token = response.data.access_token;
+                    //this.$store.state.usuario = response.data.user;
+
+                    /* Fazermos a alteração chamando o commit e passando a mutation que definimos no
+                    provedor.js e que desejamos usar aqui. No caso a 'DEFINIR_USUARIO_LOGADO' */
+                    this.$store.commit('DEFINIR_USUARIO_LOGADO', {
+                        token: response.data.access_token,
+                        usuario: response.data.user
+                    })
+
                     this.$router.push({ name: 'gerentes' });
                 })
                 .catch(erro => console.log(erro));

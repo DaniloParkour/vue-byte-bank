@@ -8,6 +8,16 @@ const estado = {
     usuario: {}
 }
 
+//Os valores dos estados não podem ser alterados diretamente
+//Para poder alterar os valores dos estados usaremos as mutations
+const mutations = {
+    DEFINIR_USUARIO_LOGADO (state, { token, usuario }) {
+        state.usuario = usuario;
+        state.token = token;
+    }
+}
+
 export default new Vuex.Store({
-    state: estado
+    state: estado,
+    mutations
 })
