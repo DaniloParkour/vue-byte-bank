@@ -30,7 +30,7 @@ export default {
     //Propriedades computadas para as que são dinâmicas
     computed: {
       usuarioEstaLogado() {
-        return Boolean(localStorage.getItem('token'));
+        return Boolean(this.$store.state.token);
       }
     }
 }
