@@ -1,6 +1,9 @@
 <template>
     <div class="container">
-        <h1>Login</h1>
+        
+        <!-- Usa-se duas chaves para pegar valores do data {{valorData}} -->
+        <h1>Login {{appName}}</h1>
+        
         <form @submit.prevent="efetuarLogin" >
             <div class="form-group">
                 <label for="email">E-mail</label>
@@ -31,7 +34,8 @@
 export default {
     data() {
         return {
-            usuario: {}
+            usuario: {},
+            appName: 'App Test'
         }
     },
     methods: {
